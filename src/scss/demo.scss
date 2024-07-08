@@ -1,0 +1,138 @@
+body {
+  background: $body-background-color;
+  color: $foreground-color;
+  font-family: 'DINP-R', arial, serif;
+  font-size: 1.3em;
+  max-height: 100vh;
+  height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: $foreground-color;
+  color: $black;
+  margin: 0 auto;
+  width: 100%;
+  max-height: 100%;
+  padding: 40px;
+  position: relative;
+  cursor: pointer;
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    user-select: none;
+  }
+}
+
+.stats-pills {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.stats-pills-item {
+  border-radius: 8px;
+  margin-right: 16px;
+  background-color: #eee;
+  padding: 8px;
+
+  &:last-child {
+    margin-right: 0;
+    // margin-left: 16px;
+  }
+}
+
+.stats-total-counter {
+  font-size: 32px;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.progress-section {
+  width: 640px;
+  margin-bottom: 32px;
+  user-select: none;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.progress-bar-container {
+  position: relative;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #eee;
+}
+
+.progress-bar-scale {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background-color: brown;
+}
+
+.image-bg-outline {
+  background: linear-gradient(180deg, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  display: flex;
+  padding: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  user-select: none;
+  margin-bottom: 32px;
+}
+
+.image-bg {
+  background: rgb(238, 174, 202);
+  background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  height: 300px;
+  // width: 50%;
+  align-items: center;
+  pointer-events: none;
+}
+
+.image {
+  height: 100%;
+  display: inline-block;
+  pointer-events: none;
+}
+
+#reset-btn {
+  user-select: none;
+}
+
+.new-points {
+  user-select: none;
+  position: fixed;
+  animation: slide-top 0.5s ease-in both;
+  font-weight: bold;
+  pointer-events: none;
+  color: black;
+  -webkit-text-stroke: 3px white;
+  text-stroke: 3px white;
+  paint-order: stroke fill;
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-100px);
+    transform: translateY(-100px);
+  }
+}
