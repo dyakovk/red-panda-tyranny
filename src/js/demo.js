@@ -168,6 +168,7 @@ class TotalPoints {
   reset() {
     this.#value = 0;
     this.#invkokeSubscribers(this.#value);
+    localStorage.setItem('score', this.getValue().toString());
   }
 
   onValueChange(callback) {
