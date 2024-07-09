@@ -44,7 +44,8 @@ const calcProgressBar = () => {
     } else {
       currentLevelPos = newLevelPos;
       currentProgress.level = levels[newLevelPos].name;
-      const newPercentage = (totalPoints.getValue() / levels[newLevelPos].points) * 100;
+      const newPercentage =
+        (totalPoints.getValue() / levels[newLevelPos].points) * 100;
       currentProgress.scale = newPercentage;
     }
 
@@ -63,6 +64,11 @@ function assignResetBtnListeners() {
   refs.totalCounter = totalCounter;
 
   totalPoints = new TotalPoints();
+
+  // set span and progressbar default value
+  refs.totalCounter.innerHTML = totalPoints.getValue();
+  calcProgressBar();
+
   totalPoints.onValueChange((newValue) => {
     console.log(refs.totalCounter);
     refs.totalCounter.innerHTML = newValue;
@@ -126,12 +132,29 @@ class TotalPoints {
   #value = 0;
   #subscribers = [];
 
+  // set default value
+  constructor() {
+    // get saved score from localStorage
+    const savedScore = parseInt(localStorage.getItem('score'));
+
+    // check if it was not saved => assign it to 0
+    if (savedScore === NaN) {
+      savedScore = 0;
+    }
+
+    this.#value = savedScore;
+  }
+
   getValue() {
     return this.#value;
   }
 
   increment(nextValue) {
     this.#value += nextValue;
+
+    // this will save current score to localStorage
+    localStorage.setItem('score', this.getValue().toString());
+
     this.#invkokeSubscribers(this.#value);
   }
 

@@ -2,6 +2,9 @@
 
 .env
 
+# bun binary lock file
+bun.lockb
+
 # Mac OS X
 .DS_Store
 ._.*
